@@ -7,10 +7,10 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-public class ExampleResourceTest {
+class ExampleResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    void testHelloEndpoint() {
         given()
           .when().get("/hello")
           .then()
@@ -19,7 +19,7 @@ public class ExampleResourceTest {
     }
     
     @Test
-    public void testGreetingEndpoint() {
+    void testGreetingEndpoint() {
         given()
           .when().get("/hello/greeting/{name}", "Dp")
           .then()
