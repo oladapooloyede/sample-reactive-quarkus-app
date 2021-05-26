@@ -14,7 +14,7 @@
 # docker run -i --rm -p 8080:8080 quarkus/code-with-quarkus
 #
 ###
-FROM quay.io/quarkus/quarkus-distroless-image:1.0
+FROM openjdk:8-jre-alpine
 
 COPY ./target/code-with-quarkus-1.0.0-SNAPSHOT.jar app.jar
 
