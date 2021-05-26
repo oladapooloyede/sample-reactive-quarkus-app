@@ -1,5 +1,5 @@
 ####
-# This Dockerfile is used in order to build a distroless container that runs the Quarkus application in native (no JVM) mode
+# This Dockerfile is used in order to build a container that runs the Quarkus application in native (no JVM) mode
 #
 # Before building the container image run:
 #
@@ -7,17 +7,21 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native-distroless -t quarkus/code-with-quarkus .
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/code-with-quarkus .
 #
 # Then run the container using:
 #
 # docker run -i --rm -p 8080:8080 quarkus/code-with-quarkus
 #
 ###
-FROM openjdk:8-jre-alpine
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.3
+WORKDIR /work/
+RUN chown 1001 /work \
+    && chmod "g+rwX" /work \
+    && chown 1001:root /work
+COPY --chown=1001:root target/*-runner /work/application
 
-COPY ./target/code-with-quarkus-1.0.0-SNAPSHOT.jar app.jar
+EXPOSE 8080
+USER 1001
 
-EXPOSE 9090
-
-CMD ["java", "-jar", "app.jar"]
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
