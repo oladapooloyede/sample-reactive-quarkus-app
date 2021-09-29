@@ -1,0 +1,3 @@
+META-INF/panache-archive.marker
+org/acme/NativeExampleResourceIT.class
+org/acme/ExampleResourceTest.class

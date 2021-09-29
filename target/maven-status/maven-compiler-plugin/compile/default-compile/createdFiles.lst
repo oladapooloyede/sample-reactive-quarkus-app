@@ -1,0 +1,5 @@
+org/acme/repository/PersonRepository.class
+org/acme/entity/Person.class
+org/acme/ReactiveGreetingService.class
+META-INF/panache-archive.marker
+org/acme/ExampleResource.class
