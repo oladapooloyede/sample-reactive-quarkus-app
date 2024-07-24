@@ -7,5 +7,5 @@ COPY target/quarkus-app/*.jar .
 COPY target/quarkus-app/app/ app/
 COPY target/quarkus-app/quarkus/ quarkus/
 
-EXPOSE 9090
+EXPOSE 8080
 ENTRYPOINT [ "java", "-jar","quarkus-run.jar" ]
